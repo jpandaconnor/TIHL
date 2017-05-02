@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="normalize.css" rel="stylesheet">
+
+    <style>
+        header {
+            text-align: center;
+            background: url("img/header_background.png");
+            background-size: cover;
+            color: blueviolet;
+        }
+
+        img {
+            margin: 40px 0px 0px 0px;
+            border: 7px solid white;
+            border-raduis: 20px;
+        }
+
+        a {
+            color: white;
+            font-family: Arial;
+        }
+
+        h1 {
+            font-size: 70px;
+        }
+
+        h2 {
+            font-family: "Arial Black";
+        }
+
+        ul {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        li {
+            display: inline;
+            padding: 0px 10px 0px 10px;
+        }
+
+        article {
+            max-width: 500px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        p {
+            font-family: Arial;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 36px;
+                padding: 5px;
+            }
+
+            li {
+                padding: 5px;
+                display: block;
+            }
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Theme Test</title>
+</head>
+
+<body>
+    <header>
+        <h1>Panda's Test Theme</h1>
+        <ul>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+
+    <article>
+        <h2>An Automated Home</h2>
+        <p>Ladies and Gentlemen. We present you with our latest product, the Happylife Home! For just $30,000, you can revolutionize the way you live your life! No longer will you have to slave away in the kitchen or watch your kids every second of every minute of every hour of every day! The kitchen will cook your meals for you! The house will rock your kiddos to sleep! And best of all, there's a built in nursery that will occupy the little ones for hours as they visit all the wonderful corners of the world in virtual reality—from the safety of your own home!
+            Sounds great, right? In fact, it sounds like something right out of a 1950s Sears and Roebuck catalog. How could you not want a Happylife Home that would do everything for you, and never once complain?
+            Well, it may not complain, but it just might eat you. And that's the truth about the Happylife Home. For the Hadleys, it seems like a dream come true. But when things go wrong, it's clear that automation isn't all it's cracked up to be. No matter what these gadgets can do, they're no replacement for good old-fashioned parenting. </p>
+        <button>Setting information</button>
+    </article>
+
+    <article>
+        <h2>Into the Future We Go</h2>
+        <p>We'll be honest: Shmoop doesn't know when this story takes place. It's the future, sure, but that's all we can say. We don't know when exactly it happens, which makes the story seem more applicable to our own time, don't you think? Because this story doesn't take place in a specific future year, you might read it with the nagging feeling that Bradbury is talking about the present. He's sneaky like that.</p>
+        <button>Future Information</button>
+    </article>
+
+    <article>
+        <h2>Virtual Africa</h2>
+        <p>The real star of the setting here is the virtual African veldt. It's the place that gets the most description, plus it's the title of the book, so, you know, it's pretty significant. We hear all about the sounds of antelope and the smells of the grass. Bradbury spends more time telling us about the veldt than any other place, so we can't help but pay close attention.
+            The virtual reality room renders this Africa "to the final pebble and bit of straw" (13). This is better than HD; it's like really being there. Bradbury is careful here to give us lots of sensory information, like the scents of the scene: "The hot straw smell of lion grass, the cool green smell of the hidden water hole, the great rusty smell of animals, the smell of dust like a red paprika in the hot air" (17). And these smells also invade the rest of the house. Sadly, virtual Africa is not like Vegas—what happens there does not stay there.)
+            The nursery is a little too real, as George notes when he says, "This is a little too real." (15). Gee, that one really requires our powers of analysis. But even though the nursery is too real, it matters that it's still virtual. Remember, this nursery responds to the children's minds. So its virtual reality tells us about the mental reality going on in the kids' brains. And it's not a pretty picture.</p>
+        <button>Africa Information</button>
+    </article>
+
+    <script>
+        $("button").on("click", function () {
+           alert("Clicked on");
+        });
+    </script>
+</body>
+</html>
