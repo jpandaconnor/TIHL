@@ -1,0 +1,3 @@
+Working on sharpening any PHP skills for a potential apprenticeship
+
+Alongisde it works with MySQL as well and what not
