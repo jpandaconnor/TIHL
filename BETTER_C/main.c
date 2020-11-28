@@ -6,6 +6,8 @@ int main() {
     int i;
     float testFloat = 1.7e4;
 
+    _Bool testBoolean = 1;
+
     printf("Print something here please\n");
     
     // Read 2 inputs
