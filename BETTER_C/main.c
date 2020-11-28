@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main() {
     
@@ -6,7 +7,8 @@ int main() {
     int i;
     float testFloat = 1.7e4;
 
-    _Bool testBoolean = 1;
+    _Bool testBoolean = 1; // Used for C89
+    bool nicerBoolean = false; // Used >= C99, required stdbool.h
 
     printf("Print something here please\n");
     
