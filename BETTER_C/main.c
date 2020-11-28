@@ -23,11 +23,18 @@ int main() {
 
     /* Enums */
 
-    // Enums are just spicey integers
-    enum colours { red, yellow, blue};
+    // Enums are just spicy integers
+    enum colours { red, yellow, blue=160 };
     enum someMoreColours { cyan, magenta, yellow };
 
     enum colours colour = yellow;
+
+    /* Chars */
+
+    // All the single...nvm
+
+    char T = 'T';
+    char BIGT = 'BIG'; // This errors as it's a multi character constant
 
     return 0;
 }
