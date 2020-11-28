@@ -3,6 +3,8 @@
 
 int main() {
     
+    /* All your basic things here */
+
     char str[100];
     int i;
     float testFloat = 1.7e4;
@@ -17,6 +19,15 @@ int main() {
 
     // Print what has been entered
     printf("\nEntered %d %s\n", i, str);
+
+
+    /* Enums */
+
+    // Enums are just spicey integers
+    enum colours { red, yellow, blue};
+    enum someMoreColours { cyan, magenta, yellow };
+
+    enum colours colour = yellow;
 
     return 0;
 }
