@@ -4,6 +4,7 @@ int main() {
     
     char str[100];
     int i;
+    float testFloat = 1.7e4;
 
     printf("Print something here please\n");
     
