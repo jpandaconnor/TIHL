@@ -21,6 +21,10 @@ int main(int argc, char *argv[]) {
      */
 
     /**
+     * ==, !=, <, >, >=, <= (Same things again)
+     */
+
+    /**
      * BITWISE OPERATORS, LET'S DO IT
      * 
      * 
