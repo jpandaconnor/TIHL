@@ -15,6 +15,15 @@ int main(int argc, char *argv[]) {
      *  =, +=, -=, *= (Assignment ops....woop)
      */
 
-    
+    /**
+     * /= - Divde and assign
+     * %= - Modulus and assign
+     */
+
+    /**
+     * BITWISE OPERATORS, LET'S DO IT
+     * 
+     * 
+     */
 
 }
