@@ -4,3 +4,6 @@ Async if possible
 Cloud based - HTTP
 No writing to files
 
+
+
+Database based admin alts - Like serverguard but better somewhat
