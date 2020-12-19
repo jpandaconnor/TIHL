@@ -1,1 +1,6 @@
+Logging - 
+
+Async if possible
+Cloud based - HTTP
+No writing to files
 
