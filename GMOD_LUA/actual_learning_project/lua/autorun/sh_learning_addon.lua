@@ -1,6 +1,7 @@
 ALA_ADDON_NAME = "A Learning Addon"
 
 ALA_HOOK_PLAYERSAY = "PlayerSay"
+ALA_HOOK_HUDPAINT = "HUDPaint"
 
 
 local dontError = "dontError"
