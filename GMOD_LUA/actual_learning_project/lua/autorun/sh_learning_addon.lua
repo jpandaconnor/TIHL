@@ -1,5 +1,8 @@
 ALA_ADDON_NAME = "A Learning Addon"
 
+ALA_HOOK_PLAYERSAY = "PlayerSay"
+
+
 local dontError = "dontError"
 
 function addition(num1, num2)
