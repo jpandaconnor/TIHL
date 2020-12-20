@@ -1,3 +1,9 @@
+EASY ONE - 
+
+Filtering system, HTTP endpoint to get a list of bad words? 
+
+
+
 Logging - 
 
 Async if possible
