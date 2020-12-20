@@ -5,8 +5,13 @@ local someAge = 19 // Some number
 
 print(someName .. " " .. someAge .. " Using Addon " .. ALA_ADDON_NAME)
 
-local function addition(num1, num2)
-  print("Addition called with value " .. (num1 + num2))
-end
+-- COMMENTS
 
 addition(5, 2)
+
+-- Boolean stuff down here
+-- and OR or if you want
+
+
+-- Loops
+-- while true do
