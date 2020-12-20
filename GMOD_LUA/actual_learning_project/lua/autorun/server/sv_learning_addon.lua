@@ -14,4 +14,21 @@ addition(5, 2)
 
 
 -- Loops
--- while true do
+-- while true do end
+
+-- for i = 1, 10 do end
+local inventory = {}
+inventory[1] = "weapon_crowbar"
+inventory[2] = "weapon_smg1"
+
+print(inventory) -- Prints address
+
+-- To iterate through the keys anv values of the table
+for key,value in pairs(inventory) do
+  print(value)
+end
+
+-- Anothetr way by getting the max size
+for i = 1, #inventory do
+  print(inventory[i])
+end
