@@ -1,0 +1,13 @@
+Logging - 
+
+Async if possible
+Cloud based - HTTP
+No writing to files
+
+
+
+Database based admin alts - Like serverguard but better somewhat
+
+Really try and get a shit hot multithreaded application going or something
+
+Async processing and injected back into the main game thread
