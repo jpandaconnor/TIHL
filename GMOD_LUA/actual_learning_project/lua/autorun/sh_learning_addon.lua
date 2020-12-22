@@ -9,3 +9,15 @@ local dontError = "dontError"
 function addition(num1, num2)
   print("Addition called with value " .. (num1 + num2))
 end
+
+-- Loops break/continue
+
+local someData = {
+  "DB1",
+  "DB2",
+  "DB3"
+}
+
+for k,v in ipairs(someData) do
+  print(v)
+end

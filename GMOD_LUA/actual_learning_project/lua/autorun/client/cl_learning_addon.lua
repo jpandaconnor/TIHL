@@ -1,5 +1,6 @@
 include("autorun/sh_learning_addon.lua")
 
+-- Hook stuff
 hook.Add(ALA_HOOK_HUDPAINT, "ALA_HUDPaint", function()
   -- Screen width and height
   local width, height = ScrW(), ScrH()
