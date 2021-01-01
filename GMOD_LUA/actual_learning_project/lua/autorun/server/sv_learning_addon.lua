@@ -2,7 +2,12 @@ include("autorun/sh_learning_addon.lua")
 
 print("Addon loading: STARTED")
 
-require ("mysqloo")
+local DATABASE_HOST = "localhost"
+local DATABASE_PORT = 3306
+local DATABASE_NAME = "gmod"
+local DATABASE_USERNAME = "root"
+local DATABASE_PASSWORD = "teamo14"
+
 
 
 
