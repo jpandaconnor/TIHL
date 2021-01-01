@@ -34,4 +34,8 @@ hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
   end
 end)
 
+function addPlayerChatLog(text)
+  
+end
+
 print("Addon loading: FINISHED")
