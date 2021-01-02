@@ -24,6 +24,10 @@ end
 logDB:connect()
 logDB:wait()
 
+-- Run migrations
+
+
+
 
 hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
   -- Check if player has bypass permissions
