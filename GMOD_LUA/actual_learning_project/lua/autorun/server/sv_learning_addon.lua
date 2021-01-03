@@ -1,4 +1,5 @@
 require ("mysqloo")
+require ("LuaORM.API")
 
 include("autorun/sh_learning_addon.lua")
 
@@ -31,6 +32,8 @@ hook.Add(AKA_HOOK_PLAYERAUTH, "ALA_" .. AKA_HOOK_PLAYERAUTH, function(ply, steam
   addPlayer(steamid)
 
   local player = getPlayer(steamid)
+
+  
 end)
 
 hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
@@ -71,18 +74,13 @@ function getPlayer(steamid)
 
   query:setString(1, steamid)
 
-  print(query)
-  print(steamid)
-
   function query:onSuccess(data)
     local playerData = data[1]
-    print(dump(playerData))
     return playerData
   end
 
   function query:onError(err)
-    print(err)
-    print("Error occured whilst getting the query")
+    return nil
   end
 
   query:start()
