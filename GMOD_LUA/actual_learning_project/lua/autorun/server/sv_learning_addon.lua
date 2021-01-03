@@ -26,8 +26,10 @@ logDB:wait()
 
 -- Run migrations
 
-
-
+-- Add players to the database
+hook.Add(AKA_HOOK_PLAYERAUTH, "ALA_" .. AKA_HOOK_PLAYERAUTH, function()
+  
+end)
 
 hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
   -- Check if player has bypass permissions
