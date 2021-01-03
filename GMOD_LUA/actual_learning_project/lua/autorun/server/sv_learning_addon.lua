@@ -27,8 +27,10 @@ logDB:wait()
 -- Run migrations
 
 -- Add players to the database
-hook.Add(AKA_HOOK_PLAYERAUTH, "ALA_" .. AKA_HOOK_PLAYERAUTH, function()
-  
+hook.Add(AKA_HOOK_PLAYERAUTH, "ALA_" .. AKA_HOOK_PLAYERAUTH, function(ply, steamid, uniqueid)
+  print("AUTH CALLED")
+  print(uniqueid)
+  print(steamid)
 end)
 
 hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
@@ -36,7 +38,7 @@ hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
   -- if (sender:IsAdmin()) then return end
 
   if string.find(text, "fuck") then
-    print("This player is a right cheeky cunt")
+    print("This player is a right cheeky get")
   end
 
   addPlayerChatLog(text)
