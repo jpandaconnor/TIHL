@@ -7,7 +7,7 @@ print("Addon loading: STARTED")
 local DATABASE_HOST = "127.0.0.1"
 local DATABASE_PORT = 3306
 local DATABASE_NAME = "gmod"
-local DATABASE_USERNAME = "root"
+local DATABASE_USERNAME = "gmod"
 local DATABASE_PASSWORD = "teamo14"
 
 logDB = mysqloo.connect(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT)
