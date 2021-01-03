@@ -1,5 +1,4 @@
 require ("mysqloo")
-require ("LuaORM.API")
 
 include("autorun/sh_learning_addon.lua")
 
@@ -29,11 +28,9 @@ logDB:wait()
 
 -- Add players to the database
 hook.Add(AKA_HOOK_PLAYERAUTH, "ALA_" .. AKA_HOOK_PLAYERAUTH, function(ply, steamid, uniqueid)
-  addPlayer(steamid)
-
-  local player = getPlayer(steamid)
-
-  
+  local player = upsertPlayer(steamid, ply)
+ 
+  incrementJoinCount(player)
 end)
 
 hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
@@ -48,25 +45,56 @@ hook.Add(ALA_HOOK_PLAYERSAY, "ALA_PlayerSay", function(sender, text, teamChat)
 end)
 
 
-function addPlayer(steamid)
-  local preparedQuery = logDB:prepare("INSERT IGNORE INTO players (`steam_id`, `created_at`) VALUES(?, ?)")
+function upsertPlayer(steamid, ply)
+  local player = getPlayer(steamid)
 
-  preparedQuery:setString(1, steamid)
-  preparedQuery:setString(2, os.date("!%Y-%m-%d %T"))
-  preparedQuery:start()
+  local query = nil
 
-  function preparedQuery:onSuccess(data)
-    print("Rows inserted successfully!")
+  if player == nil then
+    query = logDB:prepare("INSERT IGNORE INTO players (`steam_id`, `current_name`, `created_at`) VALUES(?, ?, ?)")
+
+    query:setString(1, steamid)
+    query:setString(2, currentName)
+    query:setString(3, os.date("!%Y-%m-%d %T"))
+  else 
+    query = logDB:prepare("UPDATE players SET `current_name` = ? WHERE `id` = ?")
+
+    print(player)
+    print(dump(player))
+
+    query:setString(1, ply:Name())
+    query:setNumber(2, player["id"])
   end
-  
-  function preparedQuery:onError(err)
-    print("An error occured while executing the query: " .. err)
+
+  query:start()
+  query:wait()
+
+  if query:error() ~= "" then
+    return nil
   end
+
+  -- Refresh and get the new data
+  player = getPlayer(steamid)
+
+  return player
 end
 
-function incrementJoinCount(steamid)
-  local preparedQuery = logDB:prepare("INSERT IGNORE INTO players (`steam_id`, `created_at`) VALUES(?, ?)")
+function incrementJoinCount(playerData)
+  playerData["join_count"] = playerData["join_count"] + 1
 
+  local query = logDB:prepare("UPDATE players SET `join_count` = ? WHERE `steam_id` = ?")
+
+  query:setNumber(1, playerData["join_count"])
+  query:setString(2, playerData["steam_id"])
+
+  query:start()
+  query:wait()
+
+  if query:error() ~= "" then
+    return nil
+  end
+
+  return playerData
 end
 
 function getPlayer(steamid)
@@ -74,16 +102,14 @@ function getPlayer(steamid)
 
   query:setString(1, steamid)
 
-  function query:onSuccess(data)
-    local playerData = data[1]
-    return playerData
-  end
+  query:start()
+  query:wait()
 
-  function query:onError(err)
+  if query:error() ~= "" then
     return nil
   end
 
-  query:start()
+  return query:getData()[1]
 end
 
 
