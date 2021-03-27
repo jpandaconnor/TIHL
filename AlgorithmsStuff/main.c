@@ -1,3 +1,5 @@
+// Basic algorithms from https://www.programiz.com/dsa/algorithm
+
 #include <stdio.h>
 
 void adding2Integers();
@@ -8,15 +10,9 @@ int main() {
     return 0;
 }
 
+
 /**
  * Algorithm 1
- *
- * Step 1: Start
- * Step 2: Declare variables num1, num2 and sum.
- * Step 3: Read values num1 and num2.
- * Step 4: Add num1 and num2 and assign the result to sum - sum←num1+num2
- * Step 5: Display sum
- * Step 6: Stop
  */
 void adding2Integers() {
     int num1 = 148;
@@ -28,4 +24,11 @@ void adding2Integers() {
     sprintf(sum_string, "%d", sum);
 
     printf("Algorithm 1: %s\n", sum_string);
+}
+
+/**
+ * Algorithm 2
+ */
+void largestOutOf3Integers() {
+
 }
