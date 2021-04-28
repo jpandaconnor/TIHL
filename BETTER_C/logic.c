@@ -25,9 +25,12 @@ int main(int argc, char *argv[]) {
      */
 
     /**
-     * BITWISE OPERATORS, LET'S DO IT
+     * BITWISE + SHIFT OPERATORS, LET'S DO IT
      * 
+     * Operates in bits on integer values
+     * Not used in common programs
      * 
+     * Can use a single integer to store several bits of information
      */
 
 }
