@@ -7,7 +7,7 @@ services:
         user: root
         environment: 
             - ACCEPT_EULA=Y
-            - SA_PASSWORD='AVeryStrongPassword123@!'
+            - MSSQL_SA_PASSWORD='AVeryStrongPassword123@!'
             - MSSQL_PID=Express
         ports:
             - 1433:1433
