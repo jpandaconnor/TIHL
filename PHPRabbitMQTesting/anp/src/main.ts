@@ -1,8 +1,31 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { NestExpressApplication } from "@nestjs/platform-express";
+import { Transport } from "@nestjs/microservices";
+
+export const msOptions = {
+  transport: Transport.RMQ,
+  options: {
+    urls: ['amqp://rabbitmq:5672'],
+    queue: 'cats_queue',
+    queueOptions: {
+      durable: true
+    },
+  },
+};
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const app: NestExpressApplication = await NestFactory.create<NestExpressApplication>(
+    AppModule,
+    {
+      logger: console,
+    },
+  );
+
+  app.connectMicroservice(msOptions);
+
+
+  await app.startAllMicroservicesAsync();
+  await app.listenAsync(4000);
 }
 bootstrap();

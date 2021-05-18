@@ -37,12 +37,12 @@ services:
             - /app/vendor
             - ./app:/app
 
-        anp:
-            build: 
-                context: anp
-            volumes: 
-                - /app/node_modules
-                - ./app:/app
+    anp:
+        build:
+            context: anp
+        volumes: 
+            - /app/node_modules
+            - ./anp:/app
             
             
     rabbitmq:
