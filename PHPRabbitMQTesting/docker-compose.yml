@@ -36,6 +36,14 @@ services:
         volumes: 
             - /app/vendor
             - ./app:/app
+
+        anp:
+            build: 
+                context: anp
+            volumes: 
+                - /app/node_modules
+                - ./app:/app
+            
             
     rabbitmq:
         image: rabbitmq:3-management

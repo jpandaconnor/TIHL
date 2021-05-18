@@ -14,5 +14,12 @@
 */
 
 $router->get('/', function () use ($router) {
+    app('amqp')->publish(json_encode(['message' => 'Hello']), 'env.user.sendMessage', [
+        'exchange' => [
+            'type'    => 'topic',
+            // 'name'    => 'direct.exchange',
+        ],
+    ]);
+
     return $router->app->version();
 });
