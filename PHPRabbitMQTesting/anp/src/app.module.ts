@@ -11,7 +11,7 @@ import { RabbitMQModule } from "@golevelup/nestjs-rabbitmq";
     RabbitMQModule.forRoot(RabbitMQModule, {
       exchanges: [
         {
-          name: 'amq.topic',
+          name: 'orka.pubsub',
           type: 'topic',
         },
       ],
