@@ -22,8 +22,6 @@ async function bootstrap() {
     },
   );
 
-  app.connectMicroservice(msOptions);
-
 
   await app.startAllMicroservicesAsync();
   await app.listenAsync(4000);
