@@ -15,18 +15,14 @@ export class AppService {
     routingKey: 'user.getNotification',
   })*/
 
-  @MQMessage('A String')
+  @MQMessage('user', 'sendNotification')
   public async getNotifications(msg: {}, amqpMsg: ConsumeMessage) {
     console.log("Get Notifications called");
     console.log(amqpMsg);
   }
 
-  //
 
-/*  @RabbitSubscribe({
-    exchange: 'orka.requestreply',
-    routingKey: 'user.getOneNotification',
-  })*/
+  @MQMessage('user', 'getOneNotification')
   public async getNotificationsFunction2(msg: {}, amqpMsg: ConsumeMessage) {
     console.log("Get Notifications 2 called");
     console.log(amqpMsg);
