@@ -1,9 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientProxyFactory } from "@nestjs/microservices";
-import { msOptions } from "./main";
-import { RmOptions } from "fs";
 import { RabbitMQModule } from "@golevelup/nestjs-rabbitmq";
 
 @Module({
@@ -11,8 +8,8 @@ import { RabbitMQModule } from "@golevelup/nestjs-rabbitmq";
     RabbitMQModule.forRoot(RabbitMQModule, {
       exchanges: [
         {
-          name: 'orka.pubsub',
-          type: 'topic',
+          name: 'orka.requestreply',
+          type: 'direct',
         },
       ],
       uri: 'amqp://guest:guest@rabbitmq:5672',

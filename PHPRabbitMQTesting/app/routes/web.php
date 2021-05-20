@@ -14,10 +14,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    app('amqp')->publish(json_encode(['message' => 'Hello']), 'env.user.sendMessage', [
+    app('amqp')->publish(json_encode(['message' => 'Hello']), 'env.user.getNotifications', [
         'exchange' => [
-            'type'    => 'topic',
-            'name'    => 'orka.pubsub',
+            'type'    => 'direct',
+            'name'    => 'orka.requestreply',
         ],
     ]);
 
