@@ -13,13 +13,17 @@
 |
 */
 
+use App\Services\RabbitMQService;
+
 $router->get('/', function () use ($router) {
-    app('amqp')->publish(json_encode(['message' => 'Hello']), 'user.cmd.getOneNotification', [
+ /*   app('amqp')->publish(json_encode(['message' => 'Hello']), 'user.cmd.getOneNotification', [
         'exchange' => [
             'type'    => 'direct',
             'name'    => 'orka.requestreply',
         ],
-    ]);
+    ]);*/
+
+    (new RabbitMQService())->send(json_encode(['message' => 'Hello']), 'user.cmd.getOneNotification', ['message' => 'a class of data lol']);
 
     return $router->app->version();
 });

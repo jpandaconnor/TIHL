@@ -17,8 +17,19 @@ class RabbitMQService
         $this->amqp = app('amqp');
     }
 
-    // Send = Send and wait for a reply
-    public function send(string $service, string $cmd, $data, $callback) {
+    /**
+     *
+     * Send a message to the exchange
+     *
+     * Creates the exchange if it doesn't already exists
+     *
+     * @param string $service
+     * @param string $cmd
+     * @param $data
+     * @param null $callback
+     * @throws \Exception
+     */
+    public function send(string $service, string $cmd, $data, $callback = null) {
         if(empty($service) || empty($cmd)) {
             throw new \Exception('Service and cmd cannot be empty or null');
         }
@@ -27,8 +38,8 @@ class RabbitMQService
 
         $this->amqp->publish(json_encode($data), $topic, [
             'exchange' => [
-                'type'    => 'direct',
-                'name'    => 'orka.requestreply',
+                'type'    => self::EXCHANGE_TYPE_DIRECT,
+                'name'    => self::EXCHANGE_NAME_CMD,
             ],
         ]);
     }
