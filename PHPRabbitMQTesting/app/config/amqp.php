@@ -3,10 +3,8 @@
 use PhpAmqpLib\Message\AMQPMessage;
 
 return [
-    /* Default connection */
     'default'     => env('AMQP_CONNECTION', 'rabbitmq'),
 
-    /*Available connections*/
     'connections' => [
 
         'rabbitmq' => [

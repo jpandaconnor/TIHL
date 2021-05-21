@@ -4,6 +4,13 @@ namespace App\Services;
 
 class RabbitMQService
 {
+    const EXCHANGE_TYPE_DIRECT = 'direct';
+    const EXCHANGE_TYPE_FANOUT = 'fanout';
+    const EXCHANGE_TYPE_TOPIC = 'topic';
+
+    const EXCHANGE_NAME_CMD = 'orka.cmd';
+    const EXCHANGE_NAME_EVENT = 'orka.event';
+
     protected $amqp;
 
     public function __construct() {
@@ -22,7 +29,6 @@ class RabbitMQService
             'exchange' => [
                 'type'    => 'direct',
                 'name'    => 'orka.requestreply',
-                'declare' => true,
             ],
         ]);
     }
