@@ -22,16 +22,36 @@ class RabbitMQService
         $this->channel = $this->connection->channel();
 
         list($this->callbackQueue, ,) = $this->channel->queue_declare(
-            "",
+            '',
             false,
             false,
             true,
             false
         );
 
+        $this->channel->basic_consume(
+            $this->callbackQueue,
+            '',
+            false,
+            true,
+            false,
+            false,
+            array(
+                $this,
+                'onResponse'
+            )
+        );
+
         dump($this->callbackQueue);
 
         dump($this->channel);
+    }
+
+    public function onResponse($rep)
+    {
+        if ($rep->get('correlation_id') == $this->corr_id) {
+            $this->response = $rep->body;
+        }
     }
 
 
