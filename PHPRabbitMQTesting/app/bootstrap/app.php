@@ -60,7 +60,6 @@ $app->singleton(
 */
 
 $app->configure('app');
-$app->configure('amqp');
 
 /*
 |--------------------------------------------------------------------------
@@ -95,7 +94,6 @@ $app->configure('amqp');
 $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
-$app->register(Anik\Amqp\ServiceProviders\AmqpServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
