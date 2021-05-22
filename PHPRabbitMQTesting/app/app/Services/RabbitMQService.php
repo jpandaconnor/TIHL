@@ -15,10 +15,21 @@ class RabbitMQService
 
     protected $connection;
     protected $channel;
+    protected $callbackQueue;
 
     public function __construct() {
         $this->connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
         $this->channel = $this->connection->channel();
+
+        list($this->callbackQueue, ,) = $this->channel->queue_declare(
+            "",
+            false,
+            false,
+            true,
+            false
+        );
+
+        dump($this->callbackQueue);
 
         dump($this->channel);
     }
