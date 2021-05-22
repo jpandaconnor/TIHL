@@ -80,6 +80,12 @@ class MQMessage
             $this->channel->wait(null, false, $this->timeout);
         }
 
-        return (object) json_decode($this->response, true);
+        $responseData = (object) json_decode($this->response, true);
+
+        if(!$callback) {
+            return $responseData;
+        }
+
+        return $callback($responseData);
     }
 }
