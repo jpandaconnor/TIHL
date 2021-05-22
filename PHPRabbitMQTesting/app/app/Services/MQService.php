@@ -4,7 +4,7 @@ namespace App\Services;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-class RabbitMQService
+class MQService
 {
     const EXCHANGE_TYPE_DIRECT = 'direct';
     const EXCHANGE_TYPE_FANOUT = 'fanout';
@@ -87,7 +87,7 @@ class RabbitMQService
         dump($r);*/
     }
 
-    protected function createMessageTopic(string $service, string $cmd): string {
+    public static function createMessageTopic(string $service, string $cmd): string {
         return $service . '.cmd.' . $cmd;
     }
 }

@@ -24,8 +24,7 @@ export class AppService {
 
   @MQMessage('user', 'getOneNotification')
   public async getNotificationsFunction2(msg: {}, amqpMsg: ConsumeMessage) {
+    console.log(msg);
     return {'hello': 'sdasdas'};
-    console.log("Get Notifications 2 called");
-    console.log(amqpMsg);
   }
 }

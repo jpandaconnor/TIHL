@@ -13,6 +13,7 @@
 |
 */
 
+use App\Services\MQMessage;
 use App\Services\RabbitMQService;
 
 $router->get('/', function () use ($router) {
@@ -23,7 +24,9 @@ $router->get('/', function () use ($router) {
         ],
     ]);*/
 
-    (new RabbitMQService())->send(json_encode(['message' => 'Hello']), 'user.cmd.getOneNotification', ['message' => 'a class of data lol']);
+    $t = (new MQMessage())->send('user', 'getOneNotification', ['message' => 'Hello']);
+
+    dump($t);
 
     return $router->app->version();
 });
