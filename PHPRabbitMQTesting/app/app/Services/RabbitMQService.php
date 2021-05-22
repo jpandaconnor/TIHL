@@ -36,12 +36,18 @@ class RabbitMQService
 
         $topic = $this->createMessageTopic($service, $cmd);
 
-        $this->amqp->publish(json_encode($data), $topic, [
+        $this->amqp->get
+
+        $r = $this->amqp->publish(json_encode($data), $topic, [
             'exchange' => [
                 'type'    => self::EXCHANGE_TYPE_DIRECT,
                 'name'    => self::EXCHANGE_NAME_CMD,
             ],
-        ]);
+        ], function($t) {
+            dump($t);
+        });
+
+        dump($r);
     }
 
     protected function createMessageTopic(string $service, string $cmd): string {
