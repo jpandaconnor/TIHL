@@ -12,6 +12,9 @@ class MQMessage
     private $callbackQueue;
     private $response;
 
+    private $timeout = 5;
+
+
     // ID of this transaction
     private $transitId;
 
@@ -49,6 +52,10 @@ class MQMessage
         }
     }
 
+    public function setTimeout(int $timeout) {
+        $this->timeout = $timeout;
+    }
+
     public function send(string $service, string $cmd, $data, $callback = null) {
         if(empty($service) || empty($cmd)) {
             throw new \Exception('Service and cmd cannot be empty or null');
@@ -70,9 +77,9 @@ class MQMessage
             MQService::createMessageTopic($service, $cmd));
 
         while (!$this->response) {
-            $this->channel->wait(null, false, 5);
+            $this->channel->wait(null, false, $this->timeout);
         }
 
-        return intval($this->response);
+        return (object) json_decode($this->response, true);
     }
 }
