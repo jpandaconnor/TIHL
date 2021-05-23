@@ -14,7 +14,6 @@ class MQMessage
 
     private $timeout = 5;
 
-
     // ID of this transaction
     private $transitId;
 
@@ -58,7 +57,7 @@ class MQMessage
 
     public function send(string $service, string $cmd, $data, $callback = null) {
         if(empty($service) || empty($cmd)) {
-            throw new \Exception('Service and cmd cannot be empty or null');
+            throw new \Exception('Service and/or cmd cannot be empty or null');
         }
 
         $this->response = null;

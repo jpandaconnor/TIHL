@@ -17,13 +17,6 @@ use App\Services\MQMessage;
 use App\Services\RabbitMQService;
 
 $router->get('/', function () use ($router) {
- /*   app('amqp')->publish(json_encode(['message' => 'Hello']), 'user.cmd.getOneNotification', [
-        'exchange' => [
-            'type'    => 'direct',
-            'name'    => 'orka.requestreply',
-        ],
-    ]);*/
-
     $t = (new MQMessage())->send('user', 'getOneNotification', ['message' => 'Hello']);
 
     dump($t);
