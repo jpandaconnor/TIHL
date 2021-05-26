@@ -28,7 +28,7 @@ class MQEvent
         );
 
         $this->channel->basic_publish($message,
-            MQService::EXCHANGE_NAME_EVENT,
+            'orka.fanout',
             MQService::createEventTopic($service, $topic));
 
         $this->channel->close();

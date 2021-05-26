@@ -37,7 +37,7 @@ export class AppService {
 
   @MQEvent('user', 'updated')
   public async handleAnotherConsumer(msg: {}, amqpMsg: ConsumeMessage) {
-    console.log("ANP - Consumer 1 called");
+    console.log("ANP - Consumer 2 called");
 
     console.log(msg);
   }
