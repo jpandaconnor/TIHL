@@ -14,4 +14,8 @@ class MQService
     public static function createMessageTopic(string $service, string $cmd): string {
         return $service . '.cmd.' . $cmd;
     }
+
+    public static function createEventTopic(string $service, string $topic): string {
+        return $service . '.event.' . $topic;
+    }
 }
