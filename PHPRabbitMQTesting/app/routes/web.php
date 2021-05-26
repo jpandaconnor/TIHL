@@ -17,9 +17,11 @@ use App\Services\MQMessage;
 use App\Services\RabbitMQService;
 
 $router->get('/', function () use ($router) {
-    $t = (new MQMessage())->send('user', 'getOneNotification', ['message' => 'Hello']);
+  // $t = (new MQMessage())->send('user', 'getOneNotification', ['message' => 'Hello']);
 
-    dump($t);
+    $e = (new \App\Services\MQEvent())->publish('user', 'updated', ['message' => 'Hello']);
 
+
+//    dump($t);
     return $router->app->version();
 });

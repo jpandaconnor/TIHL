@@ -1,4 +1,4 @@
-import { RabbitRPC, RabbitSubscribe } from "@golevelup/nestjs-rabbitmq";
+import { RabbitRPC} from "@golevelup/nestjs-rabbitmq";
 
 export function MQMessage (service: string, cmd: string): any {
   const routingKey = service + '.cmd.' + cmd;

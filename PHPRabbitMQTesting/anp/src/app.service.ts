@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { RabbitSubscribe } from "@golevelup/nestjs-rabbitmq";
 import { ConsumeMessage } from "amqplib";
 import { MQMessage } from "./decorators/mq-message.decorator";
+import { MQEvent } from "./decorators/mq-event.decorator";
 
 
 @Injectable()
@@ -26,5 +27,18 @@ export class AppService {
   public async getNotificationsFunction2(msg: {}, amqpMsg: ConsumeMessage) {
     console.log(msg);
     return {'message': 'I got a response'};
+  }
+
+  @MQEvent('user', 'updated')
+  public async handleUserUpdated(msg: {}, amqpMsg: ConsumeMessage) {
+    console.log(msg);
+    return {'message': 'I got a response'};
+  }
+
+  @MQEvent('user', 'updated')
+  public async handleAnotherConsumer(msg: {}, amqpMsg: ConsumeMessage) {
+
+    console.log(msg);
+    return {'message': 'I got a response as well'};
   }
 }
