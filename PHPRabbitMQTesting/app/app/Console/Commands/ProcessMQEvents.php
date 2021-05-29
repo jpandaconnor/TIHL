@@ -45,26 +45,37 @@ $this,
 );*/
 
     public function handle() {
-        $queue = MQService::createEventConsumerQueueName('user', 'updated');
+        $messages = [
+            [
+                'service' => 'user',
+                'topic' => 'updated',
+            ],
+            [
+                'service' => 'user',
+                'topic' => 'deleted',
+            ]
+        ];
 
-        $this->channel->queue_declare($queue, false, true, true, false);
-        $this->channel->queue_bind(
-            $queue,
-            'orka.event',
-            'user.event.updated',
-            true,
-        );
+        foreach ($messages as $message) {
+            $routingKey = MQService::createEventTopic($message['service'], $message['topic']);
+            $queue = MQService::createEventConsumerQueueName($message['service'], $message['topic']);
 
-        $this->channel->basic_consume(
-            $queue,
-            '',
-            false,
-            true,
-            false,
-            false,
-            function() {
-                dump('called');
-        });
+            $this->channel->queue_declare($queue, false, true, false, true);
+            $this->channel->queue_bind(
+                $queue,
+                'orka.event',
+                $routingKey,
+                true,
+            );
+
+            $this->channel->basic_consume(
+                $queue,
+                '',
+                false,
+                true,
+                false,
+                false);
+        }
 
         while ($this->channel->is_open()) {
             $this->channel->wait();
