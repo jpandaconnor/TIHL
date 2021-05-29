@@ -2,9 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ProcessMQEvents;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
-use ProcessMQEvents;
 
 class Kernel extends ConsoleKernel
 {

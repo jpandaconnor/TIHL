@@ -21,9 +21,13 @@ class MQService
         return $service . '.event.' . $topic;
     }
 
+    public static function createEventConsumerQueueName(string $service, string $topic): string {
+        return 'ms.api;' . $service . '-' . $topic . '-queue';
+    }
+
     public function getMQConnection() {
         return new AMQPStreamConnection(
-            env('MQ.HOST', 'localhost'),
+            env('MQ.HOST', 'rabbitmq'),
             env('MQ.PORT', 5672),
             env('MQ.USER', 'guest'),
             env('MQ.PASSWORD', 'guest'));

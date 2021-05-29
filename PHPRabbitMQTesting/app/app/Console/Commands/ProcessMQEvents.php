@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Console\Commands;
+
 use App\Services\MQService;
 use Illuminate\Console\Command;
 
@@ -34,12 +36,36 @@ class ProcessMQEvents extends Command
         parent::__construct();
     }
 
+/*$this->channel->basic_consume(
+false,
+array(
+$this,
+'onResponse'
+)
+);*/
+
     public function handle() {
+        $queue = MQService::createEventConsumerQueueName('user', 'updated');
+
+        $this->channel->queue_declare($queue, false, true, true, false);
+
         $this->channel->basic_consume(
-            'user.event.updated',
-            '', false, true, false, false, function() {
+            $queue,
+            '',
+            false,
+            true,
+            false,
+            false,
+            function() {
                 dump('called');
         });
+
+        while ($this->channel->is_open()) {
+            $this->channel->wait();
+        }
+
+        $this->channel->close();
+        $this->connection->close();
     }
 
 }
