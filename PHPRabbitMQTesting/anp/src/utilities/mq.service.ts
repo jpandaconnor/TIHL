@@ -11,8 +11,13 @@ export class MQService {
             MQService.createEventPattern(service, cmd), data);
     }
 
-    public async send(service: string, cmd: string, data: any) {
-      //  await this.amqpConnection.p
+    public async send(service: string, cmd: string, data: any, returnAs: any = {}, timeout: number = 5000) {
+        await this.amqpConnection.request<typeof returnAs>({
+            exchange: EXCHANGE_NAME_CMD,
+            routingKey: MQService.createMessagePattern(service, cmd),
+            payload: data,
+            timeout
+        });
     }
 
     public static createEventPattern(service: string, cmd: string): string {

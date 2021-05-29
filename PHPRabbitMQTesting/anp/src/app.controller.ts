@@ -12,7 +12,8 @@ export class AppController {
 
   @Get()
   async getHello() {
-    await this.mqService.publish('user', 'updated', {message: 'data'});
+    // await this.mqService.publish('user', 'updated', {message: 'data'});
+    await this.mqService.send('user', 'sendNotification', {userId: 284});
     return this.appService.getHello();
   }
 }
