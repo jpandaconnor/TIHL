@@ -19,6 +19,3 @@ export function MQEvent (service: string, topic: string): any {
     }
   });
 }
-
-
-
