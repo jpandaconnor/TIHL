@@ -36,14 +36,6 @@ class ProcessMQEvents extends Command
         parent::__construct();
     }
 
-/*$this->channel->basic_consume(
-false,
-array(
-$this,
-'onResponse'
-)
-);*/
-
     public function handle() {
         $messages = [
             [
@@ -56,7 +48,8 @@ $this,
             [
                 'service' => 'user',
                 'topic' => 'deleted',
-                'callback' => function() {
+                'callback' => function($data) {
+                    dump($data);
                     dump("Callback for user deleted called");
                 }
             ]
@@ -69,7 +62,7 @@ $this,
             $this->channel->queue_declare($queue, false, true, false, true);
             $this->channel->queue_bind(
                 $queue,
-                'orka.event',
+                MQService::EXCHANGE_NAME_EVENT,
                 $routingKey,
                 true,
             );

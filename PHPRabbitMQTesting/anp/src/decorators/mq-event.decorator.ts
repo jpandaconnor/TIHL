@@ -6,7 +6,7 @@ export function MQEvent (service: string, topic: string): any {
   const queue = service + '-' +
     topic.replace('.', '-').toLowerCase() + '-queue';
 
-  const fullQueueName = process.env.SERVICE_NAME ? process.env.SERVICE_NAME + ';' + queue : queue;
+  const fullQueueName = process.env.SERVICE_NAME ? 'ms.' + process.env.SERVICE_NAME + ';' + queue : queue;
 
 
   return RabbitSubscribe({
