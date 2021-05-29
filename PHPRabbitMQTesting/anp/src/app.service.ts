@@ -8,11 +8,6 @@ export class AppService {
     return 'Hello World!';
   }
 
-/*  @RabbitSubscribe({
-    exchange: 'orka.requestreply',
-    routingKey: 'user.getNotification',
-  })*/
-
   @MQEvent('user', 'updated')
   public async handleUserUpdated(msg: {}, amqpMsg: ConsumeMessage) {
     console.log(msg);

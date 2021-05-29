@@ -7,6 +7,8 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class MQMessage
 {
+    protected $mqService;
+
     private $connection;
     private $channel;
     private $callbackQueue;
@@ -19,7 +21,9 @@ class MQMessage
 
     public function __construct()
     {
-        $this->connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
+        $this->mqService = new MQService();
+
+        $this->connection = $this->mqService->getMQConnection();
         $this->channel = $this->connection->channel();
 
         list($this->callbackQueue, ,) = $this->channel->queue_declare(

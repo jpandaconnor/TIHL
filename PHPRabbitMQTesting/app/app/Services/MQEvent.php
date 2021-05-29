@@ -7,6 +7,8 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class MQEvent
 {
+    protected $mqService;
+
     private $connection;
     private $channel;
 
@@ -14,7 +16,9 @@ class MQEvent
 
     public function __construct()
     {
-        $this->connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
+        $this->mqService = new MQService();
+
+        $this->connection = $this->mqService->getMQConnection();
         $this->channel = $this->connection->channel();
     }
 

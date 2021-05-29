@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+
 class MQService
 {
     const EXCHANGE_TYPE_DIRECT = 'direct';
@@ -17,5 +19,13 @@ class MQService
 
     public static function createEventTopic(string $service, string $topic): string {
         return $service . '.event.' . $topic;
+    }
+
+    public function getMQConnection() {
+        return new AMQPStreamConnection(
+            env('MQ.HOST', 'localhost'),
+            env('MQ.PORT', 5672),
+            env('MQ.USER', 'guest'),
+            env('MQ.PASSWORD', 'guest'));
     }
 }
