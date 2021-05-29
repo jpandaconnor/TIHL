@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RabbitMQModule } from "@golevelup/nestjs-rabbitmq";
+import {MQService} from "./utilities/mq.service";
 
 @Module({
   imports: [
     RabbitMQModule.forRoot(RabbitMQModule, {
       exchanges: [
         {
-          name: 'orka.requestreply',
+          name: 'orka.event',
           type: 'direct',
         },
       ],
@@ -19,6 +20,7 @@ import { RabbitMQModule } from "@golevelup/nestjs-rabbitmq";
   controllers: [AppController],
   providers: [
     AppService,
+    MQService,
   ],
 })
 export class AppModule {}

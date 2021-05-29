@@ -40,6 +40,8 @@ services:
     anp:
         build:
             context: anp
+        ports:
+            - "4300:4000"
         environment:
             - SERVICE_NAME=a-microservice
         volumes: 
