@@ -49,10 +49,16 @@ $this,
             [
                 'service' => 'user',
                 'topic' => 'updated',
+                'callback' => function() {
+                    dump("Callback for user updated called");
+                }
             ],
             [
                 'service' => 'user',
                 'topic' => 'deleted',
+                'callback' => function() {
+                    dump("Callback for user deleted called");
+                }
             ]
         ];
 
@@ -74,7 +80,9 @@ $this,
                 false,
                 true,
                 false,
-                false);
+                false,
+                $message['callback']
+            );
         }
 
         while ($this->channel->is_open()) {
