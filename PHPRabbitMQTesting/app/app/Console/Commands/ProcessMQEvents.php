@@ -48,6 +48,12 @@ $this,
         $queue = MQService::createEventConsumerQueueName('user', 'updated');
 
         $this->channel->queue_declare($queue, false, true, true, false);
+        $this->channel->queue_bind(
+            $queue,
+            'orka.event',
+            'user.event.updated',
+            true,
+        );
 
         $this->channel->basic_consume(
             $queue,
