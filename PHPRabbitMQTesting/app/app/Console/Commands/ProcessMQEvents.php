@@ -85,5 +85,4 @@ class ProcessMQEvents extends Command
         $this->channel->close();
         $this->connection->close();
     }
-
 }

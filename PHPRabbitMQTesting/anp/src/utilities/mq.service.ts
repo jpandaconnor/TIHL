@@ -12,7 +12,7 @@ export class MQService {
     }
 
     public async send(service: string, cmd: string, data: any, returnAs: any = {}, timeout: number = 5000) {
-        await this.amqpConnection.request<typeof returnAs>({
+        return await this.amqpConnection.request<typeof returnAs>({
             exchange: EXCHANGE_NAME_CMD,
             routingKey: MQService.createMessagePattern(service, cmd),
             payload: data,
