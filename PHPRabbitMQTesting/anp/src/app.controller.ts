@@ -8,17 +8,11 @@ export class AppController {
   constructor(
     private readonly appService: AppService,
     private readonly mqService: MQService,
-  ) {
-/*    .then(() => {
-
-    });*/
-    console.log("CALLED");
-  }
+  ) {}
 
   @Get()
   async getHello() {
     await this.mqService.publish('user', 'updated', {message: 'data'});
-    // this.mqService.publish('')
     return this.appService.getHello();
   }
 }

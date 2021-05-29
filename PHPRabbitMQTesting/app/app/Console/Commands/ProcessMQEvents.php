@@ -56,7 +56,7 @@ class ProcessMQEvents extends Command
         ];
 
         foreach ($messages as $message) {
-            $routingKey = MQService::createEventTopic($message['service'], $message['topic']);
+            $routingKey = MQService::createEventPattern($message['service'], $message['topic']);
             $queue = MQService::createEventConsumerQueueName($message['service'], $message['topic']);
 
             $this->channel->queue_declare($queue, false, true, false, true);

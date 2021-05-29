@@ -77,7 +77,7 @@ class MQMessage
 
         $this->channel->basic_publish($message,
             MQService::EXCHANGE_NAME_CMD,
-            MQService::createMessageTopic($service, $cmd));
+            MQService::createMessagePattern($service, $cmd));
 
         while (!$this->response) {
             $this->channel->wait(null, false, $this->timeout);

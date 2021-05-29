@@ -47,15 +47,6 @@ services:
         volumes: 
             - /app/node_modules
             - ./anp:/app
-
-    anp2:
-        build:
-            context: anp2
-        environment:
-            - SERVICE_NAME=a-bigger-microservice
-        volumes:
-            - /app/node_modules
-            - ./anp2:/app
             
     rabbitmq:
         image: rabbitmq:3-management
