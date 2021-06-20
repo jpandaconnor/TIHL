@@ -12,11 +12,7 @@ export function MQEvent (service: string, topic: string): any {
   return RabbitSubscribe({
     exchange: 'orka.event',
     routingKey: routingKey,
-<<<<<<< HEAD
-    // queue: queue,
-=======
     queue: fullQueueName,
->>>>>>> c898d00bc7985380e970bae86e988cf08b105235
     queueOptions: {
       durable: true,
       autoDelete: true,
