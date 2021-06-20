@@ -15,7 +15,7 @@ services:
         build: 
             context: app
         ports: 
-            - "80:80"
+            - "85:80"
         environment: 
             - APP_NAME=lumen
             - APP_ENV=local
@@ -40,6 +40,10 @@ services:
     anp:
         build:
             context: anp
+        ports:
+            - "4300:4000"
+        environment:
+            - SERVICE_NAME=a-microservice
         volumes: 
             - /app/node_modules
             - ./anp:/app
@@ -50,7 +54,6 @@ services:
         volumes: 
             - /app/node_modules
             - ./anp:/app
-            
             
     rabbitmq:
         image: rabbitmq:3-management

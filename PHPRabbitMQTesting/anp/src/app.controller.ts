@@ -1,22 +1,19 @@
-import { Controller, Get, Inject, Injectable } from "@nestjs/common";
+import { Controller, Get, Injectable } from "@nestjs/common";
 import { AppService } from './app.service';
-import { ClientProxy, Ctx, MessagePattern, Payload, RmqContext } from "@nestjs/microservices";
-import { RabbitRPC, RabbitSubscribe } from "@golevelup/nestjs-rabbitmq";
+import {MQService} from "./utilities/mq.service";
 
 @Controller()
 @Injectable()
 export class AppController {
   constructor(
     private readonly appService: AppService,
-  ) {
-    console.log("CALLED");
-  }
-
-
-
+    private readonly mqService: MQService,
+  ) {}
 
   @Get()
-  getHello(): string {
+  async getHello() {
+    // await this.mqService.publish('user', 'updated', {message: 'data'});
+    const r = await this.mqService.send('user', 'sendNotification', {userId: 284});
     return this.appService.getHello();
   }
 }

@@ -5,9 +5,14 @@ export function MQMessage (service: string, cmd: string): any {
   const queue = service + '-' +
     cmd.replace('.', '-').toLowerCase() + '-queue';
 
+  const fullQueueName = process.env.SERVICE_NAME ? 'ms.' + process.env.SERVICE_NAME + ';' + queue : queue;
+
   return RabbitRPC({
     exchange: 'orka.cmd',
     routingKey: routingKey,
-    queue: queue,
+    queue: fullQueueName,
+    queueOptions: {
+      durable: true,
+    }
   });
 }

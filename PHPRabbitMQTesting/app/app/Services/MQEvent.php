@@ -2,11 +2,12 @@
 
 namespace App\Services;
 
-use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
 class MQEvent
 {
+    protected $mqService;
+
     private $connection;
     private $channel;
 
@@ -14,7 +15,9 @@ class MQEvent
 
     public function __construct()
     {
-        $this->connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
+        $this->mqService = new MQService();
+
+        $this->connection = $this->mqService->getMQConnection();
         $this->channel = $this->connection->channel();
     }
 
@@ -28,7 +31,7 @@ class MQEvent
         );
 
         $this->channel->basic_publish($message,
-            'orka.fanout',
+            'orka.event',
             MQService::createEventTopic($service, $topic));
 
         $this->channel->close();

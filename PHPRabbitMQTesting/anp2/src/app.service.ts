@@ -11,6 +11,7 @@ export class AppService {
     return 'Hello World!';
   }
 
+<<<<<<< HEAD
 
   @MQMessage('user', 'sendNotification')
   public async getNotifications(msg: {}, amqpMsg: ConsumeMessage) {
@@ -25,6 +26,8 @@ export class AppService {
     return {'message': 'I got a response'};
   }
 
+=======
+>>>>>>> c898d00bc7985380e970bae86e988cf08b105235
   @MQEvent('user', 'updated')
   public async handleAnotherConsumer(msg: {}, amqpMsg: ConsumeMessage) {
     console.log("ANP - Consumer 2 called");
