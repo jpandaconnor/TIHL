@@ -8,7 +8,7 @@ export function MQEvent (service: string, topic: string): any {
   return RabbitSubscribe({
     exchange: 'orka.fanout',
     routingKey: routingKey,
-    queue: queue,
+    // queue: queue,
     queueOptions: {
       durable: true,
     }

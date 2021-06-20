@@ -11,10 +11,6 @@ export class AppService {
     return 'Hello World!';
   }
 
-/*  @RabbitSubscribe({
-    exchange: 'orka.requestreply',
-    routingKey: 'user.getNotification',
-  })*/
 
   @MQMessage('user', 'sendNotification')
   public async getNotifications(msg: {}, amqpMsg: ConsumeMessage) {
@@ -30,14 +26,9 @@ export class AppService {
   }
 
   @MQEvent('user', 'updated')
-  public async handleUserUpdated(msg: {}, amqpMsg: ConsumeMessage) {
-    console.log(msg);
-    console.log("Event 1 called");
-  }
-
-  @MQEvent('user', 'updated')
   public async handleAnotherConsumer(msg: {}, amqpMsg: ConsumeMessage) {
     console.log("ANP - Consumer 2 called");
+
 
     console.log(msg);
   }
