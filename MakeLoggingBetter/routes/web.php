@@ -12,5 +12,12 @@
 */
 
 $router->get('/', function () use ($router) {
+    try {
+
+        \Illuminate\Support\Facades\Log::info('test123');
+    } catch (Exception $e) {
+        dump($e);
+    }
+
     return $router->app->version();
 });
