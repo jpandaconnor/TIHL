@@ -1,0 +1,3 @@
+[submodule "MakeLoggingBetter/docker-elk"]
+	path = MakeLoggingBetter/docker-elk
+	url = https://github.com/deviantony/docker-elk.git
