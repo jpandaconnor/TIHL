@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/cloudvision', function(req, res, next) {
+  return res.send({"Test123": "Test"})
 });
 
 module.exports = router;
+
+
+
+
