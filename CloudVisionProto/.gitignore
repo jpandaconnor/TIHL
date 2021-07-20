@@ -220,3 +220,4 @@ modules.xml
 *.png
 *.jpg
 *.jpeg
+creds.json
