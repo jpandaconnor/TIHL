@@ -14,7 +14,7 @@
 $router->get('/', function () use ($router) {
     try {
 
-        \Illuminate\Support\Facades\Log::info('test123');
+        \Illuminate\Support\Facades\Log::error('test123');
     } catch (Exception $e) {
         dump($e);
     }
