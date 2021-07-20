@@ -27,6 +27,8 @@ services:
     container_name: elasticsearch
     environment:
       - "discovery.type=single-node"
+      - "http.cors.allow-origin=http://localhost:8080"
+      - "http.cors.enabled=true"
     expose:
       - "9200"
     ports:
