@@ -1,5 +1,7 @@
 <?php
 
+use Ytake\LaravelFluent\LumenLogServiceProvider;
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
@@ -81,6 +83,8 @@ $app->configure('logging');
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(LumenLogServiceProvider::class);
+
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
