@@ -1,0 +1,9 @@
+Features of Erlang
+    - Lightweight concurrency
+    - No shared data (It doesn't scale)
+    - Immutability (Once a variable is assigned, it can't be re-assigned again)
+    - Fault isolation (Localized)
+    - Self healing (Hot swapping code)
+    - Simple functional language
+    - Dynamically typed (Non-explicit variables - var)
+    - 
