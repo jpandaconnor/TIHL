@@ -6,4 +6,22 @@ Features of Erlang
     - Self healing (Hot swapping code)
     - Simple functional language
     - Dynamically typed (Non-explicit variables - var)
-    - 
+    - No user defined data types
+    - Built-in concurrency primitives
+    - Built-in error handling primitives
+    - Built-in distribution primitives
+    - Erlang is declarative
+    - Functional based language
+    - Garbage collection built in
+    - Self healing/Code hot swapping
+
+- Created at Ericsson in early 1980s
+- Erland was designed to build systems that never go down. Constant uptime - Joe Armstrong
+    - No more than 4 minutes of down time per year, or 99.99999% up time
+
+- Erland programs crash
+    - Developer should focus on processes and interactions (messages)
+    - Some other process will monitor it and bring it back up
+    - Built for fault tolerant systems
+
+- Concurrency oriented programming
